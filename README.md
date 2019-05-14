@@ -39,5 +39,5 @@ http://{your ip}
 - db passwd : dbpassword
 
 ## 참고
-confluence를 이전 할 경우 이전대상 환경에 docker-compose파일로 container를 실행하고,
+confluence를 이전 할 경우 대상 환경에 docker-compose파일로 container를 실행하고,
 confluence-data, postgres-data 데이터를 대상환경에 복제해 주면 기존환경 그대로 이용 가능합니다.
