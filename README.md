@@ -23,9 +23,6 @@ $> docker-compose up -d
 4. docker container를 확인 합니다.
 $> docker ps
 
----
-[root@wiki-vm confluence-docker-compose]# docker ps
-CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                                          NAMES
-dcbb2f9f96c2        atlassian/confluence-server:6.15.2   "/tini -- /entrypoin…"   27 minutes ago      Up 27 minutes       0.0.0.0:8091->8091/tcp, 0.0.0.0:80->8090/tcp   confluence
-b1661f870ffe        postgres:10.4                        "docker-entrypoint.s…"   27 minutes ago      Up 27 minutes       0.0.0.0:5432->5432/tcp                         confluence-postgres
----
+
+# confluence 환경 설정
+http://{your ip}
