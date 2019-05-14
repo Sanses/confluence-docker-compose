@@ -1,0 +1,31 @@
+version: '2.1'
+services:
+    confluence:
+        image: atlassian/confluence-server:6.15.2
+        restart: always
+        container_name: confluence
+        environment:
+            JVM_MINIMUM_MEMORY: 4096m
+            JVM_MAXIMUM_MEMORY: 4096m
+        ports:
+            - "80:8090"
+            - "8091:8091"
+        volumes:
+            - /opt/apps/atlassian/confluence-data:/var/atlassian/application-data/confluence
+        links:
+            - postgresql
+
+    postgresql:
+        image: postgres:10.4
+        restart: always
+        container_name: confluence-postgres
+        environment:
+            POSTGRES_DB: confluencedb
+            POSTGRES_USER: dbuser 
+            POSTGRES_PASSWORD: dbpassword
+            POSTGRES_INITDB_ARGS: --encoding=UTF-8
+            # PGDATA: /var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        volumes:
+            - /opt/apps/database/postgres-data:/var/lib/postgresql/data
