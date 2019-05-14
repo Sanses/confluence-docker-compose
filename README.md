@@ -5,11 +5,11 @@
 2. docker-compose 설치
 
 ## 사전 조건
-- confluence-data 폴더 생성
-* mkdir /opt/apps/atlassian/confluence-data
+1. confluence-data 폴더 생성
+- mkdir /opt/apps/atlassian/confluence-data
 
-- postgres-data 폴더 생성
-* mkdir /opt/apps/database/postgres-data
+2. postgres-data 폴더 생성
+- mkdir /opt/apps/database/postgres-data
 
 ## docker-compose 로 멀티 컨테이너 실행
 1. docker-compose 파일을 다운로드 합니다.
