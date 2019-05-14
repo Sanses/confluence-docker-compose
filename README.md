@@ -10,10 +10,10 @@
 3. root 계정으로 실행합니다.
 
 ## 사전 조건
-1. confluence-data 폴더 생성
+1. confluence-data 폴더 생성 (confluece application 입니다.)
 - mkdir /opt/apps/atlassian/confluence-data
 
-2. postgres-data 폴더 생성
+2. postgres-data 폴더 생성 (postgres db data 입니다.)
 - mkdir /opt/apps/database/postgres-data
 
 ## docker-compose 로 멀티 컨테이너 실행
