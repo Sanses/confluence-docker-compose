@@ -28,7 +28,8 @@
 ## confluence 환경 설정
 http://{your ip}
 
-# DB 설정 정보 참고
+
+### DB 설정 정보 참고
 - db hosts : postgresql
 - db name : confluencedb
 - db port : 5342
