@@ -4,7 +4,10 @@
 
 ## 환경준비
 1. docker-ce 설치
+- 참고 : https://docs.docker.com/install/linux/docker-ce/centos/
 2. docker-compose 설치
+- 참고 : https://docs.docker.com/compose/install/
+3. root 계정으로 실행합니다.
 
 ## 사전 조건
 1. confluence-data 폴더 생성
