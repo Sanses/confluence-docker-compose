@@ -13,9 +13,10 @@
 
 ## docker-compose 로 멀티 컨테이너 실행
 1. docker-compose 파일을 다운로드 합니다.
-wget 
+- wget https://raw.githubusercontent.com/Sanses/confluence-docker-compose/master/docker-compose.yml
 
-2. vi docker-compose.yml 파일을 검토 하고 필요에 따라 커스터 마이즈 합니다.
+2. docker-compose 파일을 검토 하고 필요에 따라 커스터 마이즈 합니다.
+- vi docker-compose.yml 
 
 3. docker-compose로 multi container를 실행 합니다.
 - docker-compose up -d
@@ -26,3 +27,10 @@ wget
 
 ## confluence 환경 설정
 http://{your ip}
+
+# DB 설정 정보 참고
+- db hosts : postgresql
+- db name : confluencedb
+- db port : 5342
+- db user : dbuser
+- db passwd : dbpassword
