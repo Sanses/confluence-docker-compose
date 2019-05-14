@@ -1,5 +1,11 @@
 # confluence+postgres 를 docker-compose로 실행합니다.
 
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+참고 : 저는 Azure VM에 생성하였습니다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
 ## 환경준비
 1. docker-ce 설치
 2. docker-compose 설치
