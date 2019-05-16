@@ -1,4 +1,4 @@
-# confluence+postgres 를 docker-compose로 실행합니다.
+# confluence+postgresql 를 docker-compose로 실행합니다.
 
 
 
