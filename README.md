@@ -11,10 +11,10 @@
 
 ## 사전 조건
 1. confluence-data 폴더 생성 (confluece application 입니다.)
-- mkdir /opt/apps/atlassian/confluence-data
+- mkdir -p /opt/apps/atlassian/confluence-data
 
 2. postgres-data 폴더 생성 (postgres db data 입니다.)
-- mkdir /opt/apps/database/postgres-data
+- mkdir -p /opt/apps/database/postgres-data
 
 ## docker-compose 로 멀티 컨테이너 실행
 1. docker-compose 파일을 다운로드 합니다.
