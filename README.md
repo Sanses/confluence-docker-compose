@@ -37,7 +37,7 @@ http://{your ip}
 ## DB 설정 정보 참고
 - db hosts : postgresql
 - db name : confluencedb
-- db port : 5342
+- db port : 5432
 - db user : dbuser
 - db passwd : dbpassword
 
