@@ -1,13 +1,16 @@
-version: '2.1'
+version: '3'
 services:
     nginx:
+        build:
+            context: .
+            args:
+                ssl: ssl 
+            dockerfile: ./DockerfileNginx
         container_name: nginx
-        image: "nginx:latest"
         ports:
-            - "80:8090"
-        networks:
-            - backend
-
+            - "443:443"
+        links:
+            - confluence 
     confluence:
         image: atlassian/confluence-server:7.3.1  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
         restart: always
@@ -22,9 +25,6 @@ services:
             - /opt/apps/atlassian/confluence-data:/var/atlassian/application-data/confluence #host dir:container dir 입니다.
         links:
             - postgresql # postgre와 연결을 설정합니다. db hosts 가 됩니다.
-        networks:
-            - backend
-
     postgresql:
         image: postgres:10.4
         restart: always
@@ -39,6 +39,3 @@ services:
             - "5432:5432"  # postgre의 포트 입니다.
         volumes:
             - /opt/apps/database/postgres-data:/var/lib/postgresql/data #host dir:container dir 입니다.
-        networks:
-            - backend
-
