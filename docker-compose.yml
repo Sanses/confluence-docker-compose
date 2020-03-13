@@ -1,24 +1,34 @@
 version: '2.1'
 services:
+    nginx:
+        container_name: nginx
+        image: "nginx:latest"
+        ports:
+            - "80:8090"
+        networks:
+            - backend
+
     confluence:
-        image: atlassian/confluence-server:6.15.2  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
+        image: atlassian/confluence-server:7.3.1  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
         restart: always
         container_name: confluence
         environment:
-            JVM_MINIMUM_MEMORY: 4096m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
-            JVM_MAXIMUM_MEMORY: 4096m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
+            JVM_MINIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
+            JVM_MAXIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
         ports:
-            - "80:8090"      #host 포트는 80이고, container포트는 8090입니다.
+            - "8090:8090"    #host 포트는 80이고, container포트는 8090입니다.
             - "8091:8091"    #confluence 컨트롤 포트 입니다.
         volumes:
             - /opt/apps/atlassian/confluence-data:/var/atlassian/application-data/confluence #host dir:container dir 입니다.
         links:
             - postgresql # postgre와 연결을 설정합니다. db hosts 가 됩니다.
+        networks:
+            - backend
 
     postgresql:
         image: postgres:10.4
         restart: always
-        container_name: confluence-postgres
+        container_name: postgres
         environment:
             POSTGRES_DB: confluencedb
             POSTGRES_USER: dbuser 
@@ -29,3 +39,6 @@ services:
             - "5432:5432"  # postgre의 포트 입니다.
         volumes:
             - /opt/apps/database/postgres-data:/var/lib/postgresql/data #host dir:container dir 입니다.
+        networks:
+            - backend
+
