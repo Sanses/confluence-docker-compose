@@ -16,6 +16,11 @@
 2. postgres-data 폴더 생성 (postgres db data 입니다.)
 - mkdir -p /opt/apps/database/postgres-data
 
+3. SSL 인증서
+- certbot-auto certonly --cert-name wiki.iisanse.com -d wiki.iisanse.com
+- cp /etc/letsencrypt/live/wiki.iisanse.com/fullchain.pem ssl
+- cp /etc/letsencrypt/live/wiki.iisanse.com/privkey.pem ssl
+
 ## docker-compose 로 멀티 컨테이너 실행
 1. docker-compose 파일을 다운로드 합니다.
 - wget https://raw.githubusercontent.com/Sanses/confluence-docker-compose/master/docker-compose.yml
@@ -24,14 +29,14 @@
 - vi docker-compose.yml 
 
 3. docker-compose로 multi container를 실행 합니다.
-- docker-compose up -d
+- docker-compose up -d --build
 
 4. docker container를 확인 합니다.
 - docker ps
 
 
 ## confluence 환경 설정
-http://{your ip}
+https://{your ip}
 
 
 ## DB 설정 정보 참고
