@@ -18,12 +18,13 @@
 
 3. SSL 인증서
 - certbot-auto certonly --cert-name wiki.iisanse.com -d wiki.iisanse.com
-- cp /etc/letsencrypt/live/wiki.iisanse.com/fullchain.pem ssl
-- cp /etc/letsencrypt/live/wiki.iisanse.com/privkey.pem ssl
 
 ## docker-compose 로 멀티 컨테이너 실행
 1. docker-compose 파일을 다운로드 합니다.
-- wget https://raw.githubusercontent.com/Sanses/confluence-docker-compose/master/docker-compose.yml
+- git clone https://github.com/Sanses/confluence-docker-compose.git
+- cd confluence-docker-compose
+- cp /etc/letsencrypt/live/wiki.iisanse.com/fullchain.pem ssl
+- cp /etc/letsencrypt/live/wiki.iisanse.com/privkey.pem ssl
 
 2. docker-compose 파일을 검토 하고 필요에 따라 커스터 마이즈 합니다.
 - vi docker-compose.yml 
@@ -36,7 +37,7 @@
 
 
 ## confluence 환경 설정
-https://{your ip}
+https://wiki.iisanse.com
 
 
 ## DB 설정 정보 참고
