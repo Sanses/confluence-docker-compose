@@ -3,8 +3,6 @@ services:
     nginx:
         build:
             context: .
-            args:
-                ssl: ssl 
             dockerfile: ./DockerfileNginx
         container_name: nginx
         ports:

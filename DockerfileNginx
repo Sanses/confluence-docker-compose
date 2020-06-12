@@ -1,13 +1,12 @@
 FROM nginx:latest
 MAINTAINER Sanse <sooabia@gmail.com>
 
-ARG ssl
 
 RUN mkdir -p /etc/nginx/ssl
 
 COPY nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
-COPY $ssl/certificate.crt /etc/nginx/ssl/certificate.crt
-COPY $ssl/private.key /etc/nginx/ssl/private.key
+COPY ssl/fullchain.pem /etc/nginx/ssl/fullchain.pem
+COPY ssl/privkey.pem /etc/nginx/ssl/privkey.pem
 
 
 CMD ["nginx", "-g", "daemon off;"]
