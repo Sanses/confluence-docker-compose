@@ -1,8 +1,12 @@
 # Certbot-auto Install
 [root@wiki-vm]# wget https://dl.eff.org/certbot-auto
+
 [root@wiki-vm]# mv certbot-auto /usr/local/bin/certbot-auto
+
 [root@wiki-vm]# chown root /usr/local/bin/certbot-auto
+
 [root@wiki-vm]# chmod 0755 /usr/local/bin/certbot-auto
+
 
 # SSL Certification Restore
 
