@@ -12,7 +12,7 @@
 
 [root@wiki-vm confluence-docker-compose]# docker-compose down
 
-[root@wiki-vm confluence-docker-compose]# certbot-auto certonly --cert-name wiki.iisanse.com -d wiki.iisanse.com
+[root@wiki-vm confluence-docker-compose]# certbot-auto renew --force-renewal --cert-name wikisanse.crt
 
 [root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisanse.crt/fullchain.pem /root/workspace/confluence-docker-compose/ssl
 
