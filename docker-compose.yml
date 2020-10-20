@@ -1,13 +1,16 @@
 version: '3'
 services:
     nginx:
-        build:
-            context: .
-            dockerfile: ./DockerfileNginx
+        image: nginx:1.19.3
+        restart: always
         container_name: nginx
         ports:
             - "80:80"
             - "443:443"
+        volumes:
+            - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+            - ./ssl/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+            - ./ssl/privkey.pem:/etc/nginx/ssl/privkey.pem
         links:
             - confluence 
     confluence:
@@ -17,8 +20,8 @@ services:
         environment:
             JVM_MINIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
             JVM_MAXIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
-            ATL_PROXY_NAME: wiki.iisanse.com
-            ATL_PROXY_PORT: 443
+            ATL_PROXY_NAME: centos.iisanse.com
+            ATL_PROXY_PORT: 443 
             ATL_TOMCAT_SCHEME: https
             ATL_TOMCAT_SECURE: "true"
         ports:
