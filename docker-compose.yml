@@ -26,7 +26,7 @@ services:
             ATL_TOMCAT_SECURE: "true"
         ports:
             - "8090:8090"    #host 포트는 80이고, container포트는 8090입니다.
-            - "8091:8091"    #confluence 컨트롤 포트 입니다.
+            - "8091:8091"    #confluence 공동작업을 위한 포트 입니다.
         volumes:
             - /opt/apps/atlassian/confluence-data:/var/atlassian/application-data/confluence #host dir:container dir 입니다.
         links:
