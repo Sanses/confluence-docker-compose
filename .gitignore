@@ -1,1 +1,4 @@
 ssl/*.pem
+mysql-data/*
+wiki-data/*
+

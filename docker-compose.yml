@@ -1,9 +1,9 @@
-version: '3'
+version: "3.4"
 services:
     nginx:
         image: nginx:1.19.3
         restart: always
-        container_name: nginx
+        container_name: nginx-1.19.3
         ports:
             - "80:80"
             - "443:443"
@@ -13,14 +13,16 @@ services:
             - ./ssl/privkey.pem:/etc/nginx/ssl/privkey.pem
         links:
             - confluence 
+        depends_on:
+            - confluence
     confluence:
-        image: atlassian/confluence-server:7.3.1  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
+        image: atlassian/confluence-server:7.8.1  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
         restart: always
-        container_name: confluence
+        container_name: confluence-7.8.1
         environment:
             JVM_MINIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
             JVM_MAXIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
-            ATL_PROXY_NAME: centos.iisanse.com
+            ATL_PROXY_NAME: confluence.iisanse.com
             ATL_PROXY_PORT: 443 
             ATL_TOMCAT_SCHEME: https
             ATL_TOMCAT_SECURE: "true"
@@ -28,20 +30,37 @@ services:
             - "8090:8090"    #host 포트는 80이고, container포트는 8090입니다.
             - "8091:8091"    #confluence 컨트롤 포트 입니다.
         volumes:
-            - /opt/apps/atlassian/confluence-data:/var/atlassian/application-data/confluence #host dir:container dir 입니다.
+            - ./wiki-data:/var/atlassian/application-data/confluence #host dir:container dir 입니다.
+            - ./mysql-driver/mysql-connector-java-5.1.49-bin.jar:/opt/atlassian/confluence/confluence/WEB-INF/lib/mysql-connector-java-5.1.49-bin.jar
         links:
-            - postgresql # postgre와 연결을 설정합니다. db hosts 가 됩니다.
-    postgresql:
-        image: postgres:10.4
+            - mysql # mysql와 연결을 설정합니다. db hosts 가 됩니다.
+        depends_on:
+            - mysql
+    mysql:
+        image: mysql:5.7
         restart: always
-        container_name: postgres
+        container_name: mysql-5.7
         environment:
-            POSTGRES_DB: confluencedb
-            POSTGRES_USER: dbuser 
-            POSTGRES_PASSWORD: dbpassword
-            POSTGRES_INITDB_ARGS: --encoding=UTF-8
-            # PGDATA: /var/lib/postgresql/data
+            MYSQL_DATABASE: "confluencedb"
+            MYSQL_USER: "dbuser" 
+            MYSQL_PASSWORD: "dbpassword"
+            MYSQL_ROOT_PASSWORD: "root"
+            TZ: "Asia/Seoul"
+        command: 
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_bin
+            - --default-storage-engine=INNODB
+            - --max_allowed_packet=256M
+            - --transaction-isolation=READ-COMMITTED
+            - --innodb_log_file_size=2G
+            - --sql_mode=NO_AUTO_VALUE_ON_ZERO
+            - --binlog_format=row
         ports:
-            - "5432:5432"  # postgre의 포트 입니다.
+            - "3306:3306"  # mysql의 포트 입니다.
         volumes:
-            - /opt/apps/database/postgres-data:/var/lib/postgresql/data #host dir:container dir 입니다.
+            - ./mysql-data:/var/lib/mysql
+    adminer:
+        image: adminer
+        container_name: adminer
+        ports:
+          - 8081:8080
