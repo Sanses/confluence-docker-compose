@@ -61,6 +61,7 @@ services:
             - ./mysql-data:/var/lib/mysql
     adminer:
         image: adminer
+        restart: always
         container_name: adminer
         ports:
           - 8081:8080
