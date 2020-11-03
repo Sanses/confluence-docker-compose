@@ -16,9 +16,9 @@ services:
         depends_on:
             - confluence
     confluence:
-        image: atlassian/confluence-server:7.8.1  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
+        image: atlassian/confluence-server:7.4.5  #서버로 사용할 버전 명시 가장 최신은 latest로 하면 됩니다.
         restart: always
-        container_name: confluence-7.8.1
+        container_name: confluence-7.4.5
         environment:
             JVM_MINIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
             JVM_MAXIMUM_MEMORY: 2048m  #default메모리는 1g입니다. 서버환경에 따라 증감합니다.
