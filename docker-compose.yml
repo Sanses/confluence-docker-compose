@@ -53,7 +53,6 @@ services:
             - --max_allowed_packet=256M
             - --transaction-isolation=READ-COMMITTED
             - --innodb_log_file_size=2G
-            - --sql_mode=NO_AUTO_VALUE_ON_ZERO
             - --binlog_format=row
         ports:
             - "3306:3306"  # mysql의 포트 입니다.
