@@ -7,15 +7,21 @@
 
 [root@wiki-vm]# chmod 0755 /usr/local/bin/certbot-auto
 
+# SSL Certification Create
+
+[root@wiki-vm confluence-docker-compose]# docker-compose down
+
+[root@wiki-vm confluence-docker-compose]# certbot-auto certonly --cert-name wiki.sansae.net -d wiki.sansae.net
+
 
 # SSL Certification Restore
 
 [root@wiki-vm confluence-docker-compose]# docker-compose down
 
-[root@wiki-vm confluence-docker-compose]# certbot-auto renew --force-renewal --cert-name wikisanse.crt
+[root@wiki-vm confluence-docker-compose]# certbot-auto renew --force-renewal --cert-name wikisansae.crt
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisanse.crt/fullchain.pem /root/workspace/confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisansae.crt/fullchain.pem /root/workspace/confluence-docker-compose/ssl
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisanse.crt/privkey.pem /root/workspace/confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisansae.crt/privkey.pem /root/workspace/confluence-docker-compose/ssl
 
 [root@wiki-vm confluence-docker-compose]# docker-compose up -d --build
