@@ -18,10 +18,10 @@
 
 [root@wiki-vm confluence-docker-compose]# docker-compose down
 
-[root@wiki-vm confluence-docker-compose]# certbot-auto renew --force-renewal --cert-name wikisansae.crt
+[root@wiki-vm confluence-docker-compose]# certbot-auto renew --force-renewal --cert-name wiki.sansae.net
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisansae.crt/fullchain.pem /root/workspace/confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/fullchain.pem /root/workspace/confluence-docker-compose/ssl
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wikisansae.crt/privkey.pem /root/workspace/confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/privkey.pem /root/workspace/confluence-docker-compose/ssl
 
-[root@wiki-vm confluence-docker-compose]# docker-compose up -d --build
+[root@wiki-vm confluence-docker-compose]# docker-compose up -d
