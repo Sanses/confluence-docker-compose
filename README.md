@@ -26,7 +26,7 @@
 - vi docker-compose.yml 
 
 4. docker-compose로 multi container를 실행 합니다.
-- docker-compose up -d --build
+- docker-compose up -d
 
 5. docker container를 확인 합니다.
 - docker ps
