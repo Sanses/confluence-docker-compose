@@ -18,7 +18,7 @@ services:
     confluence:
         image: atlassian/confluence-server:8.5.2
         restart: always
-        container_name: confluence-7.14.13
+        container_name: confluence-8.5.2
         environment:
             JVM_MINIMUM_MEMORY: 4096m  
             JVM_MAXIMUM_MEMORY: 4096m
