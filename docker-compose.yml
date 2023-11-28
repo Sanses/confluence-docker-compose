@@ -16,7 +16,7 @@ services:
         depends_on:
             - confluence
     confluence:
-        image: atlassian/confluence-server:7.14.13
+        image: atlassian/confluence-server:8.5.2
         restart: always
         container_name: confluence-7.14.13
         environment:
