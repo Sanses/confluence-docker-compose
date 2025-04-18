@@ -10,8 +10,8 @@
 
 [root@wiki-vm confluence-docker-compose]# certbot certonly --standalone -d wiki.sansae.net
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/fullchain.pem confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/fullchain.pem ssl
 
-[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/privkey.pem confluence-docker-compose/ssl
+[root@wiki-vm confluence-docker-compose]# cp /etc/letsencrypt/live/wiki.sansae.net/privkey.pem ssl
 
 [root@wiki-vm confluence-docker-compose]# docker-compose up -d

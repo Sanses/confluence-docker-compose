@@ -16,14 +16,14 @@ services:
         depends_on:
             - confluence
     confluence:
-        image: atlassian/confluence-server:8.5.4
+        image: atlassian/confluence-server:7.14.13
         restart: always
-        container_name: confluence
+        container_name: confluence-7.14.13
         environment:
             JVM_MINIMUM_MEMORY: 4096m  
             JVM_MAXIMUM_MEMORY: 4096m
             ATL_PROXY_NAME: wiki.sansae.net
-            ATL_PROXY_PORT: 443
+            ATL_PROXY_PORT: 443 
             ATL_TOMCAT_SCHEME: https
             ATL_TOMCAT_SECURE: "true"
         ports:
@@ -44,7 +44,7 @@ services:
         environment:
             MYSQL_DATABASE: "mysqldb"
             MYSQL_USER: "dbuser" 
-            MYSQL_PASSWORD: ""
+            MYSQL_PASSWORD: "dbpassword"
             MYSQL_ROOT_PASSWORD: "root"
             TZ: "Asia/Seoul"
         command: 
